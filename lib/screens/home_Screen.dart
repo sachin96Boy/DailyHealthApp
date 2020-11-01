@@ -16,7 +16,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomAppBar(),
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
-        slivers: <Widget>[_buildHeader(screenHeight)],
+        slivers: <Widget>[
+          _buildHeader(screenHeight),
+          _buildPreventionTips(screenHeight),
+        ],
       ),
     );
   }
@@ -46,6 +49,59 @@ SliverToBoxAdapter _buildHeader(double screenHeight) {
                 ),
               )
             ],
+          ),
+          SizedBox(
+            height: screenHeight * 0.03,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Are you feeling Unwell?',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(
+                height: screenHeight * 0.01,
+              ),
+              Text(
+                'If you are feeling below symtomps please contact the nearest Doctor ',
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 15.0,
+                ),
+              ),
+              SizedBox(
+                height: screenHeight * 0.03,
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+SliverToBoxAdapter _buildPreventionTips(double screenHeight) {
+  return SliverToBoxAdapter(
+    child: Container(
+      padding: const EdgeInsets.all(20.0),
+      color: Colors.amber,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Prevention Tips',
+            style: const TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
           ),
         ],
       ),
