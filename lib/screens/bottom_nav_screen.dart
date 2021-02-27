@@ -23,7 +23,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        //make the selected tab as the current screen
         onTap: (value) => setState(() => _currentIndex = value),
+
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         showSelectedLabels: false,
@@ -42,7 +44,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
               (key, value) => MapEntry(
                 key,
                 BottomNavigationBarItem(
-                  title: Text(''),
+                  label: '',
                   icon: Container(
                     padding: const EdgeInsets.symmetric(
                       vertical: 6.0,
@@ -50,7 +52,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                     ),
                     decoration: BoxDecoration(
                       color: _currentIndex == key
-                          ? Colors.blue[600]
+                          ? Colors.purple[600]
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(20.0),
                     ),
