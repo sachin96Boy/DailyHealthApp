@@ -1,5 +1,6 @@
-import 'package:Health_app/config/palatte.dart';
 import 'package:flutter/material.dart';
+
+import 'package:Health_app/config/palatte.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -10,7 +11,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(Icons.menu),
         iconSize: 28.0,
-        onPressed: () {},
+        onPressed:(){}, 
       ),
       actions: <Widget>[
         IconButton(

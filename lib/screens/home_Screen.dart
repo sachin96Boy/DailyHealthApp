@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:Health_app/data/data.dart';
+import 'package:Health_app/widgets/appDrawer.dart';
 import 'package:flutter/material.dart';
+
 
 import '../widgets/custom_app_bar.dart';
 import '../config/palatte.dart';
@@ -10,11 +14,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+GlobalKey<ScaffoldState> _key = GlobalKey();
+
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: CustomAppBar(),
+      drawer: AppDrawer(),
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
         slivers: <Widget>[
@@ -160,10 +169,16 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Image.asset(
               "assets/images/P3_StyHome.png",
+              fit: BoxFit.contain,
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Stay Home and Be Safe'),
+                Text('Stay Home and Be Safe', style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold,), maxLines: 2,),
+                SizedBox(height: screenHeight*0.01),
+                Text('Do your duty as  a citizen \n to Face this pandamic', style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold,),),
+                
               ],
             )
           ],

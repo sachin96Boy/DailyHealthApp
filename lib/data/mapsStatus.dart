@@ -1,0 +1,2 @@
+const GOOGLE_API_KEY = "AIzaSyAyI1kJ0CJ0d55BW2uE6F-Qwaiq-v57tVU";
+

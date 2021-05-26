@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 import '../screens/screens.dart';
+import '../screens/mapScreen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
     HomeScreen(),
     StatusScreen(),
-    Scaffold(),
+    MapScreen(),
     Scaffold(),
   ];
 
@@ -36,7 +38,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         items: [
           Icons.home,
           Icons.insert_chart,
-          Icons.event_note,
+          Icons.add_location,
           Icons.info,
         ]
             .asMap()
