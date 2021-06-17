@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Health_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -11,11 +12,11 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   Completer<GoogleMapController> _controller = Completer();
-  GoogleMapController newGoogleMapController;
+  late GoogleMapController newGoogleMapController;
 
   GlobalKey<ScaffoldState> scaffoldkey = new GlobalKey<ScaffoldState>();
 
-  Position currentPosition;
+  late Position currentPosition;
   var geolocator = Geolocator();
 
   void locatePosition() async {
@@ -41,10 +42,10 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Map Viewer"),
-        backgroundColor: Colors.purple[500],
-      ),
+      appBar: CustomAppBar(
+          // title: Text("Map Viewer"),
+          // backgroundColor: Colors.purple[500],
+          ),
       body: GoogleMap(
         mapType: MapType.normal,
         myLocationButtonEnabled: true,

@@ -1,8 +1,11 @@
-
 import 'package:flutter/material.dart';
 
-import '../screens/screens.dart';
+
 import '../screens/mapScreen.dart';
+import '../screens/home_Screen.dart';
+import '../screens/status_Screen.dart';
+
+
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -16,6 +19,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     MapScreen(),
     Scaffold(),
   ];
+
+  
 
   int _currentIndex = 0;
 

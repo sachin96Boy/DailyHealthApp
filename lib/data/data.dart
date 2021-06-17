@@ -1,3 +1,5 @@
+
+
 final prevention = [
   {'assets/images/P4_socDist.png': 'Avoid close\ncontact'},
   {'assets/images/P2_wshHnds.png': 'Wash your\nhands often'},
@@ -5,3 +7,5 @@ final prevention = [
 ];
 
 final covidDailyCases = [12.27, 11.15, 13.83];
+
+
