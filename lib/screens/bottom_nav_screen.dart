@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import '../screens/mapScreen.dart';
 import '../screens/home_Screen.dart';
 import '../screens/status_Screen.dart';
-
-
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -19,8 +16,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     MapScreen(),
     Scaffold(),
   ];
-
-  
 
   int _currentIndex = 0;
 
@@ -40,7 +35,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         elevation: 0.0,
-        items: [
+        items: const [
           Icons.home,
           Icons.insert_chart,
           Icons.add_location,

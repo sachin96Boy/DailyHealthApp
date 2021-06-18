@@ -18,7 +18,7 @@ class _StatusScreenState extends State<StatusScreen> {
   @override
   void didChangeDependencies() {
     print("Didchangedependanciescalled");
-    Provider.of<CovidData>(context, listen: false).fetchAndSetDataCovid();
+    Provider.of<CovidData>(context, listen: true).fetchAndSetDataCovid();
     super.didChangeDependencies();
   }
 

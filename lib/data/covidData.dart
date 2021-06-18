@@ -11,6 +11,8 @@ class CovidData with ChangeNotifier {
 
     var response = await http.get(Uri.parse(url));
     print(json.decode(response.body));
+
+    var extractedData = json.decode(response.body) as Map<String, dynamic>;
     notifyListeners();
   }
 }
