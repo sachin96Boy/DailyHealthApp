@@ -42,8 +42,10 @@ class _CovidBarChartState extends State<CovidBarChart> {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.85,
+            height: MediaQuery.of(context).size.height * 0.35,
             child: BarChart(
               BarChartData(
+                alignment: BarChartAlignment.spaceAround,
                 maxY: 16.0,
                 barTouchData: BarTouchData(enabled: false),
                 titlesData: FlTitlesData(

@@ -1,4 +1,5 @@
 import 'package:Health_app/data/covidData.dart';
+import 'package:Health_app/data/data.dart';
 import 'package:Health_app/screens/covidBarChart.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class _StatusScreenState extends State<StatusScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             sliver: SliverToBoxAdapter(
               child: CovidBarChart(
-                covidCases: [20.0, 25.5],
+                covidCases: covidDailyCases,
               ),
             ),
           ),
