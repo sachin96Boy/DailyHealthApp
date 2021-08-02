@@ -1,3 +1,4 @@
+import 'package:Health_app/screens/information.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/mapScreen.dart';
@@ -14,7 +15,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     HomeScreen(),
     StatusScreen(),
     MapScreen(),
-    Scaffold(),
+    InformationScreen(),
   ];
 
   int _currentIndex = 0;

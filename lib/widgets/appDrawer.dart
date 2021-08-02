@@ -12,7 +12,7 @@ class AppDrawer extends StatelessWidget {
         children: [
           AppBar(
             title: Text("Covid Drawer Sachin"),
-            backgroundColor: Colors.purple[500],
+            backgroundColor: Theme.of(context).primaryColor,
             automaticallyImplyLeading: false,
           ),
           Divider(),
