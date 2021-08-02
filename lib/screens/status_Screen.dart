@@ -16,40 +16,78 @@ class StatusScreen extends StatefulWidget {
 }
 
 class _StatusScreenState extends State<StatusScreen> {
+  var _isInit = true;
+  var _isLoading = false;
+
+  var _local = false;
+  var _today = false;
+
+   get local {
+    return _local;
+  }
+
+     get today {
+    return _today;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     print("Didchangedependanciescalled");
-    Provider.of<CovidData>(context, listen: true).fetchAndSetDataCovid();
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<CovidData>(context, listen: true)
+          .fetchAndSetDataCovid()
+          .then((_) => {
+                setState(() {
+                  _isLoading = false;
+                }),
+              });
+    }
+    _isInit = false;
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Scaffold(
       appBar: CustomAppBar(),
       backgroundColor: Palette.primaryColor,
-      body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
-        slivers: [
-          _buildHeader(),
-          _buildRegionTabBar(),
-          _buildStateTabBar(),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            sliver: SliverToBoxAdapter(
-              child: StatusGridViewer(),
+      body: _isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : CustomScrollView(
+              physics: ClampingScrollPhysics(),
+              slivers: [
+                _buildHeader(),
+                _buildRegionTabBar(),
+                _buildStateTabBar(),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  sliver: SliverToBoxAdapter(
+                    child: StatusGridViewer(local,today),
+                  ),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  sliver: SliverToBoxAdapter(
+                    child: CovidBarChart(
+                      covidCases: covidDailyCases,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            sliver: SliverToBoxAdapter(
-              child: CovidBarChart(
-                covidCases: covidDailyCases,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -96,7 +134,12 @@ class _StatusScreenState extends State<StatusScreen> {
               Text('Global'),
             ],
             onTap: (index) {
-              print('Statmeaer changed');
+              print('Statmeaer changed ' + index.toString());
+             
+                if (index.isOdd) {
+                  _local = !_local;
+                }
+             
             },
           ),
         ),
@@ -120,7 +163,10 @@ class _StatusScreenState extends State<StatusScreen> {
               Text('Total'),
             ],
             onTap: (index) {
-              print('Date to show details selected');
+              print('Date to show details selected ' + index.toString());
+              if (index.isOdd) {
+                _today = !_today;
+              }
             },
           ),
         ),

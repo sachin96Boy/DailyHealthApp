@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../data/covidData.dart';
 
 
 class StatusGridViewer extends StatefulWidget {
-  const StatusGridViewer({Key? key}) : super(key: key);
+
+  final bool localData;
+  final bool todayData;
+
+  StatusGridViewer(this.localData, this.todayData);
 
   @override
   _StatusGridViewerState createState() => _StatusGridViewerState();
@@ -11,15 +18,20 @@ class StatusGridViewer extends StatefulWidget {
 class _StatusGridViewerState extends State<StatusGridViewer> {
   @override
   Widget build(BuildContext context) {
+
+    final covidData = Provider.of<CovidData>(context);
+    final dataInstance = covidData.data;
+
+    
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
       color: Colors.white24,
-      
       child: Column(
         children: [
           Flexible(
             child: Row(
               children: [
+                
                 _buildStateCard("Total Cases", "count", Colors.yellow),
                 _buildStateCard("Total Deaths", "countDeath", Colors.red),
               ],

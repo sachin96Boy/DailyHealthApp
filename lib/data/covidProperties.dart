@@ -1,22 +1,22 @@
 
 class CovidProperties {
   final String updateDate;
-  final String localNewCases;
-  final String localTotalCases;
-  final String totalHospitalized;
-  final String localDeaths;
-  final String localNewDeaths;
-  final String localRecovered;
-  final String localActiveCases;
-  final String globalNewCases;
-  final String globalTotalCases;
-  final String globalDeaths;
-  final String globalNewDeaths;
-  final String globalRecovered;
-  final String totalPCR;
+  final int localNewCases;
+  final int localTotalCases;
+  final int totalHospitalized;
+  final int localDeaths;
+  final int localNewDeaths;
+  final int localRecovered;
+  final int localActiveCases;
+  final int globalNewCases;
+  final int globalTotalCases;
+  final int globalDeaths;
+  final int globalNewDeaths;
+  final int globalRecovered;
+  final int totalPCR;
   final List pcrData;
 
-  CovidProperties(
+  CovidProperties( 
       {required this.updateDate,
       required this.localNewCases,
       required this.localTotalCases,
@@ -31,5 +31,6 @@ class CovidProperties {
       required this.globalNewDeaths,
       required this.globalRecovered,
       required this.totalPCR,
-      required this.pcrData});
+      required this.pcrData
+      });
 }

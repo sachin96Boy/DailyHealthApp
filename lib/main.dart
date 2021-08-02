@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => CovidData([]),
+      
       child: MaterialApp(
         title: 'HealthCare App',
         debugShowCheckedModeBanner: false,
