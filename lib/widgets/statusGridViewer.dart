@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../data/covidData.dart';
 
-
 class StatusGridViewer extends StatefulWidget {
-
   final bool localData;
   final bool todayData;
 
@@ -18,11 +16,52 @@ class StatusGridViewer extends StatefulWidget {
 class _StatusGridViewerState extends State<StatusGridViewer> {
   @override
   Widget build(BuildContext context) {
-
     final covidData = Provider.of<CovidData>(context);
     final dataInstance = covidData.data;
 
-    
+    var totalCases;
+    var totalDeaths;
+    var totalRecovered;
+    var totalActive;
+
+    if (widget.localData == true && widget.todayData == true) {
+      setState(() {
+        dataInstance.forEach((element) {
+          totalCases = element.localNewCases;
+          totalDeaths = element.localNewDeaths;
+          totalRecovered = element.localRecovered;
+          totalActive = element.localActiveCases;
+        });
+      });
+    }else if(widget.localData == true && widget.todayData == false){
+      setState(() {
+        dataInstance.forEach((element) {
+          totalCases = element.localTotalCases;
+          totalDeaths = element.localDeaths;
+          totalRecovered = element.localRecovered;
+          totalActive = element.localActiveCases;
+        });
+      });
+    }else if(widget.localData == false && widget.todayData == true){
+      setState(() {
+        dataInstance.forEach((element) {
+          totalCases = element.globalNewCases;
+          totalDeaths = element.globalNewDeaths;
+          totalRecovered = element.globalRecovered;
+          totalActive = element.globalTotalCases;
+        });
+      });
+    }else if(widget.localData == false && widget.todayData == false){
+      setState(() {
+        dataInstance.forEach((element) {
+          totalCases = element.globalTotalCases;
+          totalDeaths = element.globalDeaths;
+          totalRecovered = element.globalRecovered;
+          totalActive = element.globalTotalCases;
+        });
+      });
+    }
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
       color: Colors.white24,
@@ -31,17 +70,16 @@ class _StatusGridViewerState extends State<StatusGridViewer> {
           Flexible(
             child: Row(
               children: [
-                
-                _buildStateCard("Total Cases", "count", Colors.yellow),
-                _buildStateCard("Total Deaths", "countDeath", Colors.red),
+                _buildStateCard("Total Cases", '$totalCases', Colors.yellow),
+                _buildStateCard("Total Deaths", '$totalDeaths', Colors.red),
               ],
             ),
           ),
           Flexible(
             child: Row(
               children: [
-                _buildStateCard("Total Recovered", "countRec", Colors.green),
-                _buildStateCard("Total Active", "countAct", Colors.grey),
+                _buildStateCard("Total Recovered", '$totalRecovered', Colors.green),
+                _buildStateCard("Total Active", '$totalActive', Colors.grey),
               ],
             ),
           ),

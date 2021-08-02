@@ -1,14 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+
 import 'package:Health_app/data/covidData.dart';
 import 'package:Health_app/data/data.dart';
+
+
 import 'package:Health_app/screens/covidBarChart.dart';
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
-import 'package:flutter/material.dart';
+
 
 import 'package:Health_app/config/palatte.dart';
 import 'package:Health_app/config/styles.dart';
+
 import 'package:Health_app/widgets/custom_app_bar.dart';
 import 'package:Health_app/widgets/statusGridViewer.dart';
-import 'package:provider/provider.dart';
+
 
 class StatusScreen extends StatefulWidget {
   @override
@@ -19,8 +26,8 @@ class _StatusScreenState extends State<StatusScreen> {
   var _isInit = true;
   var _isLoading = false;
 
-  var _local = false;
-  var _today = false;
+  var _local = true;
+  var _today = true;
 
    get local {
     return _local;
@@ -136,10 +143,12 @@ class _StatusScreenState extends State<StatusScreen> {
             onTap: (index) {
               print('Statmeaer changed ' + index.toString());
              
-                if (index.isOdd) {
+                setState(() {
+                
                   _local = !_local;
-                }
+              
              
+                });
             },
           ),
         ),
@@ -164,9 +173,11 @@ class _StatusScreenState extends State<StatusScreen> {
             ],
             onTap: (index) {
               print('Date to show details selected ' + index.toString());
-              if (index.isOdd) {
+              setState(() {
+               
                 _today = !_today;
-              }
+              
+              });
             },
           ),
         ),
