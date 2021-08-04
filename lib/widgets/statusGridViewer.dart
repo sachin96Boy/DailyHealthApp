@@ -3,17 +3,13 @@ import 'package:provider/provider.dart';
 
 import '../data/covidData.dart';
 
-class StatusGridViewer extends StatefulWidget {
+class StatusGridViewer extends StatelessWidget {
   final bool localData;
   final bool todayData;
 
   StatusGridViewer(this.localData, this.todayData);
 
-  @override
-  _StatusGridViewerState createState() => _StatusGridViewerState();
-}
 
-class _StatusGridViewerState extends State<StatusGridViewer> {
   @override
   Widget build(BuildContext context) {
     final covidData = Provider.of<CovidData>(context);
@@ -24,42 +20,42 @@ class _StatusGridViewerState extends State<StatusGridViewer> {
     var totalRecovered;
     var totalActive;
 
-    if (widget.localData == true && widget.todayData == true) {
-      setState(() {
+    if (localData == true && todayData == true) {
+      // setState(() {
         dataInstance.forEach((element) {
           totalCases = element.localNewCases;
           totalDeaths = element.localNewDeaths;
           totalRecovered = element.localRecovered;
           totalActive = element.localActiveCases;
         });
-      });
-    }else if(widget.localData == true && widget.todayData == false){
-      setState(() {
+      // });
+    }else if(localData == true && todayData == false){
+      // setState(() {
         dataInstance.forEach((element) {
           totalCases = element.localTotalCases;
           totalDeaths = element.localDeaths;
           totalRecovered = element.localRecovered;
           totalActive = element.localActiveCases;
         });
-      });
-    }else if(widget.localData == false && widget.todayData == true){
-      setState(() {
+      // });
+    }else if(localData == false && todayData == true){
+      // setState(() {
         dataInstance.forEach((element) {
           totalCases = element.globalNewCases;
           totalDeaths = element.globalNewDeaths;
           totalRecovered = element.globalRecovered;
           totalActive = element.globalTotalCases;
         });
-      });
-    }else if(widget.localData == false && widget.todayData == false){
-      setState(() {
+      // });
+    }else if(localData == false && todayData == false){
+      // setState(() {
         dataInstance.forEach((element) {
           totalCases = element.globalTotalCases;
           totalDeaths = element.globalDeaths;
           totalRecovered = element.globalRecovered;
           totalActive = element.globalTotalCases;
         });
-      });
+      // });
     }
 
     return Container(

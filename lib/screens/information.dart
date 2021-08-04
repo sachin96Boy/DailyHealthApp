@@ -7,7 +7,7 @@ import '../widgets/custom_app_bar.dart';
 class InformationScreen extends StatelessWidget {
   // const InformationScreen({Key? key}) : super(key: key);
 
-  List<dynamic> dummy = [];
+  final List<dynamic> dummy = [];
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +17,7 @@ class InformationScreen extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Hit Me'),
           onPressed: () {
-            // Provider.of<CovidData>(context, listen: false)
-            //     .fetchAndSetDataCovid();
-
-            dummy = Provider.of<CovidData>(context, listen: false).data;
-            print(dummy);
-            print(dummy.isEmpty);
-            dummy.forEach((element) {
-              print(element.updateDate);
-            });
+            print("button pressed");
           },
         ),
       ),

@@ -1,4 +1,3 @@
-
 class CovidProperties {
   final String updateDate;
   final int localNewCases;
@@ -16,7 +15,7 @@ class CovidProperties {
   final int totalPCR;
   final List pcrData;
 
-  CovidProperties( 
+  CovidProperties(
       {required this.updateDate,
       required this.localNewCases,
       required this.localTotalCases,

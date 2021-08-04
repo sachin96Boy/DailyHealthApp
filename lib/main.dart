@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       create: (context) => CovidData([]),
       
       child: MaterialApp(
-        title: 'HealthCare App',
+        title: 'Covid-19 CareApp',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

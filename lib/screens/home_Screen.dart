@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 import 'package:Health_app/data/data.dart';
 import 'package:Health_app/widgets/appDrawer.dart';
-import 'package:flutter/material.dart';
+
 
 
 import '../widgets/custom_app_bar.dart';
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       // key: _key,
-      appBar: CustomAppBar(),
+      appBar:  CustomAppBar(),
       drawer: AppDrawer(),
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
@@ -42,9 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           color: Palette.primaryColor,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40.0),
-            bottomRight: Radius.circular(40.0),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: const Radius.circular(40.0),
+            bottomRight: const Radius.circular(40.0),
           ),
         ),
         child: Column(
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Text(
+                const Text(
                   'HealthCare First',
                   style: const TextStyle(
                     color: Colors.white,
@@ -68,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
+                const Text(
                   'Are you feeling Unwell?',
                   style: const TextStyle(
                     color: Colors.white,
@@ -79,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: screenHeight * 0.01,
                 ),
-                Text(
+                const Text(
                   'If you are feeling below symtomps please contact the nearest Doctor ',
                   style: const TextStyle(
                     color: Colors.white70,
@@ -105,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
+           const Text(
               'Prevention Tips',
               style: const TextStyle(
                 fontSize: 22.0,
@@ -176,9 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Stay Home and Be Safe', style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold,), maxLines: 2,),
+                const Text('Stay Home and Be Safe', style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold,), maxLines: 2,),
                 SizedBox(height: screenHeight*0.01),
-                Text('Do your duty as  a citizen \n to Face this pandamic', style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold,),),
+                const Text('Do your duty as  a citizen \n to Face this pandamic', style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold,),),
                 
               ],
             )

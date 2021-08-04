@@ -4,18 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 import 'package:Health_app/data/covidData.dart';
-import 'package:Health_app/data/data.dart';
-
 
 import 'package:Health_app/screens/covidBarChart.dart';
-
 
 import 'package:Health_app/config/palatte.dart';
 import 'package:Health_app/config/styles.dart';
 
 import 'package:Health_app/widgets/custom_app_bar.dart';
 import 'package:Health_app/widgets/statusGridViewer.dart';
-
 
 class StatusScreen extends StatefulWidget {
   @override
@@ -26,14 +22,17 @@ class _StatusScreenState extends State<StatusScreen> {
   var _isInit = true;
   var _isLoading = false;
 
+
   var _local = true;
   var _today = true;
 
-   get local {
+
+
+  get local {
     return _local;
   }
 
-     get today {
+  get today {
     return _today;
   }
 
@@ -50,13 +49,12 @@ class _StatusScreenState extends State<StatusScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<CovidData>(context, listen: true)
-          .fetchAndSetDataCovid()
-          .then((_) => {
-                setState(() {
-                  _isLoading = false;
-                }),
-              });
+      Provider.of<CovidData>(context, listen: true).fetchAndSetDataCovid().
+      then((_) => {
+            setState(() {
+              _isLoading = false;
+            }),
+          });
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -64,7 +62,21 @@ class _StatusScreenState extends State<StatusScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
+    final covidData = Provider.of<CovidData>(context);
+    final dataInstance = covidData.data;
+
+    final List<String> numList = [];
+    final List<String> numList2 = [];
+    final List<int> newNumList;
+
+    // if (_isDataGetting) {}
+
+    dataInstance.first.pcrData.forEach((element) {
+      numList.add(element['pcr_count']);
+      numList2.add(element['date']);
+    });
+
+    newNumList = numList.map((e) => int.parse(e)).toList();
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -82,14 +94,15 @@ class _StatusScreenState extends State<StatusScreen> {
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   sliver: SliverToBoxAdapter(
-                    child: StatusGridViewer(local,today),
+                    child: StatusGridViewer(local, today),
                   ),
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   sliver: SliverToBoxAdapter(
                     child: CovidBarChart(
-                      covidCases: covidDailyCases,
+                      covidCases: newNumList.sublist(1, 8),
+                      covidDates:  numList2,
                     ),
                   ),
                 ),
@@ -102,8 +115,8 @@ class _StatusScreenState extends State<StatusScreen> {
     return SliverPadding(
       padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
-        child: Center(
-          child: Text(
+        child: const Center(
+          child: const Text(
             'Statistics',
             style: const TextStyle(
               color: Colors.white,
@@ -128,7 +141,7 @@ class _StatusScreenState extends State<StatusScreen> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           child: TabBar(
-            indicator: BubbleTabIndicator(
+            indicator:const BubbleTabIndicator(
               tabBarIndicatorSize: TabBarIndicatorSize.tab,
               indicatorHeight: 40.0,
               indicatorColor: Colors.white60,
@@ -137,18 +150,15 @@ class _StatusScreenState extends State<StatusScreen> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.white,
             tabs: [
-              Text('Local'),
-              Text('Global'),
+              const Text('Local'),
+              const Text('Global'),
             ],
             onTap: (index) {
               print('Statmeaer changed ' + index.toString());
-             
-                setState(() {
-                
-                  _local = !_local;
-              
-             
-                });
+
+              setState(() {
+                _local = !_local;
+              });
             },
           ),
         ),
@@ -158,7 +168,7 @@ class _StatusScreenState extends State<StatusScreen> {
 
   SliverPadding _buildStateTabBar() {
     return SliverPadding(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
         child: DefaultTabController(
           length: 2,
@@ -168,15 +178,13 @@ class _StatusScreenState extends State<StatusScreen> {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white54,
             tabs: [
-              Text('Today'),
-              Text('Total'),
+              const Text('Today'),
+              const Text('Total'),
             ],
             onTap: (index) {
               print('Date to show details selected ' + index.toString());
               setState(() {
-               
                 _today = !_today;
-              
               });
             },
           ),

@@ -1,21 +1,14 @@
-import 'package:Health_app/config/styles.dart';
-import 'package:Health_app/data/data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class CovidBarChart extends StatefulWidget {
-  // const CovidBarChart({Key? key, required this.covidCases}) : super(key: key);
+class CovidBarChart extends StatelessWidget {
+  final List<int> covidCases;
+  final List<String> covidDates;
 
-  final List<double> covidCases;
+  CovidBarChart({required this.covidCases, required this.covidDates});
 
-  const CovidBarChart({required this.covidCases});
+  final List<Color> colorList = [Colors.red, Colors.green];
 
-  @override
-  _CovidBarChartState createState() => _CovidBarChartState();
-}
-
-class _CovidBarChartState extends State<CovidBarChart> {
-  List<Color> colorList = [Colors.red, Colors.green];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,18 +16,18 @@ class _CovidBarChartState extends State<CovidBarChart> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
+          topLeft: const Radius.circular(20.0),
+          topRight:const  Radius.circular(20.0),
         ),
       ),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(25.0),
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: const Text(
               'PCR Test Updates',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -45,47 +38,61 @@ class _CovidBarChartState extends State<CovidBarChart> {
             height: MediaQuery.of(context).size.height * 0.35,
             child: BarChart(
               BarChartData(
-                alignment: BarChartAlignment.spaceAround,
-                maxY: 16.0,
+                alignment: BarChartAlignment.spaceEvenly,
+                maxY: 30000.0,
                 barTouchData: BarTouchData(enabled: false),
                 titlesData: FlTitlesData(
                   show: true,
                   bottomTitles: SideTitles(
-                      margin: 10.0,
-                      showTitles: true,
-                      // getTextStyles: Styles.chartLabelTextStyle,
-                      getTitles: (double value) {
-                        switch (value.toInt()) {
-                          case 0:
-                            return 'May 24';
-                          case 1:
-                            return 'May 25';
-                          case 2:
-                            return 'May 26';
-                          case 3:
-                            return 'May 27';
-                          case 4:
-                            return 'May 28';
-                          case 5:
-                            return 'May 29';
-                          case 6:
-                            return 'May 30';
-                          default:
-                            return '';
-                        }
-                      }),
+                    margin: 10.0,
+                    showTitles: true,
+                    rotateAngle: 315.0,
+                    // getTextStyles: Styles.chartLabelTextStyle,
+                    getTitles: (double value) {
+                      switch (value.toInt()) {
+                        case 0:
+                          return covidDates[0];
+                        case 1:
+                          return covidDates[1];
+                        case 2:
+                          return covidDates[2];
+                        case 3:
+                          return covidDates[3];
+                        case 4:
+                          return covidDates[4];
+                        case 5:
+                          return covidDates[5];
+                        case 6:
+                          return covidDates[6];
+                        default:
+                          return '';
+                      }
+                    },
+                  ),
+                  leftTitles: SideTitles(
+                    showTitles: true,
+                    getTextStyles: (value) => const TextStyle(
+                      color: Color(0xff939393),
+                      fontSize: 8,
+                    ),
+                    margin: 0,
+                  ),
                 ),
-                barGroups: covidDailyCases
+                barGroups: covidCases
                     .asMap()
                     .map(
                       (key, value) => MapEntry(
                         key,
-                        BarChartGroupData(x: key, barRods: [
-                          BarChartRodData(
-                            y: value,
-                            colors: colorList,
-                          )
-                        ]),
+                        BarChartGroupData(
+                          x: key,
+                          barRods: [
+                            BarChartRodData(
+                              y: value.toDouble(),
+                              colors: colorList,
+                            )
+                          ],
+                          showingTooltipIndicators: [1],
+                        ),
                       ),
                     )
                     .values

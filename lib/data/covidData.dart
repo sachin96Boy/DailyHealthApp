@@ -50,7 +50,8 @@ class CovidData with ChangeNotifier {
         globalNewDeaths: extractedData['data']['global_new_deaths'],
         globalRecovered: extractedData['data']['global_recovered'],
         totalPCR: extractedData['data']['total_pcr_testing_count'],
-        pcrData: extractedData['data']['daily_pcr_testing_data']
+        pcrData: extractedData['data']['daily_pcr_testing_data'],
+        
         ));
 
     _data = loadedData;
