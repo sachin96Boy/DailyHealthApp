@@ -5,27 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:Health_app/data/data.dart';
 import 'package:Health_app/widgets/appDrawer.dart';
 
-
-
 import '../widgets/custom_app_bar.dart';
 import '../config/palatte.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/homeScreen';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
 // GlobalKey<ScaffoldState> _key = GlobalKey();
-
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       // key: _key,
-      appBar:  CustomAppBar(),
+      appBar: CustomAppBar(),
       drawer: AppDrawer(),
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
@@ -107,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-           const Text(
+            const Text(
               'Prevention Tips',
               style: const TextStyle(
                 fontSize: 22.0,
@@ -122,10 +119,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: prevention
                   .map(
                     (e) => Column(
+                      
                       children: [
                         Image.asset(
                           e.keys.first,
                           height: screenHeight * 0.14,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
                         ),
                         SizedBox(
                           height: screenHeight * 0.015,
@@ -173,15 +173,30 @@ class _HomeScreenState extends State<HomeScreen> {
             Image.asset(
               "assets/images/P3_StyHome.png",
               fit: BoxFit.contain,
+
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Stay Home and Be Safe', style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold,), maxLines: 2,),
-                SizedBox(height: screenHeight*0.01),
-                const Text('Do your duty as  a citizen \n to Face this pandamic', style: const TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold,),),
-                
+                const Text(
+                  'Stay Home and Be Safe',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                ),
+                SizedBox(height: screenHeight * 0.01),
+                const Text(
+                  'Do your duty as  a citizen \n to Face this pandamic',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             )
           ],

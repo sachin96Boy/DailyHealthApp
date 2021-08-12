@@ -1,4 +1,8 @@
 import 'package:Health_app/data/covidData.dart';
+import 'package:Health_app/screens/home_Screen.dart';
+import 'package:Health_app/screens/information.dart';
+import 'package:Health_app/screens/mapScreen.dart';
+import 'package:Health_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +27,12 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: BottomNavScreen(),
+        routes: {
+          StatusScreen.routeName : (context) => StatusScreen(),
+          MapScreen.routeName: (context) => MapScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
+          InformationScreen.routeName : (context) => InformationScreen()
+        },
       ),
     );
   }

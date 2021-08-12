@@ -6,10 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../widgets/custom_app_bar.dart';
 
-
-
-
 class MapScreen extends StatefulWidget {
+  static const routeName = '/mapScreen';
   @override
   _MapScreenState createState() => _MapScreenState();
 }

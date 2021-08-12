@@ -1,9 +1,10 @@
-import 'package:Health_app/screens/information.dart';
 import 'package:flutter/material.dart';
+
 
 import '../screens/mapScreen.dart';
 import '../screens/home_Screen.dart';
 import '../screens/status_Screen.dart';
+import '../screens/information.dart';
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -19,10 +20,10 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   ];
 
   int _currentIndex = 0;
-
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

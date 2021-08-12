@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 import 'package:Health_app/data/covidData.dart';
@@ -14,6 +13,7 @@ import 'package:Health_app/widgets/custom_app_bar.dart';
 import 'package:Health_app/widgets/statusGridViewer.dart';
 
 class StatusScreen extends StatefulWidget {
+  static const routeName = '/statusScreen';
   @override
   _StatusScreenState createState() => _StatusScreenState();
 }
@@ -22,11 +22,8 @@ class _StatusScreenState extends State<StatusScreen> {
   var _isInit = true;
   var _isLoading = false;
 
-
   var _local = true;
   var _today = true;
-
-
 
   get local {
     return _local;
@@ -49,12 +46,13 @@ class _StatusScreenState extends State<StatusScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<CovidData>(context, listen: true).fetchAndSetDataCovid().
-      then((_) => {
-            setState(() {
-              _isLoading = false;
-            }),
-          });
+      Provider.of<CovidData>(context, listen: true)
+          .fetchAndSetDataCovid()
+          .then((_) => {
+                setState(() {
+                  _isLoading = false;
+                }),
+              });
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -62,21 +60,22 @@ class _StatusScreenState extends State<StatusScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final covidData = Provider.of<CovidData>(context);
-    final dataInstance = covidData.data;
+    final covidData = Provider.of<CovidData>(context, listen: false);
+    // final dataInstance = covidData.data;
+    final pcrcount = covidData.pcrCount;
+    final pcrDates = covidData.date;
 
-    final List<String> numList = [];
-    final List<String> numList2 = [];
-    final List<int> newNumList;
+    // final List<String> numList = [];
+    // final List<String> numList2 = [];
+    // final List<int> newNumList;
 
-    // if (_isDataGetting) {}
+    // // if (_isDataGetting) {}
+    // dataInstance.first.pcrData.forEach((element) {
+    //   numList.add(element['pcr_count']);
+    //   numList2.add(element['date']);
+    // });
 
-    dataInstance.first.pcrData.forEach((element) {
-      numList.add(element['pcr_count']);
-      numList2.add(element['date']);
-    });
-
-    newNumList = numList.map((e) => int.parse(e)).toList();
+    // newNumList = numList.map((e) => int.parse(e)).toList();
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -101,8 +100,8 @@ class _StatusScreenState extends State<StatusScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   sliver: SliverToBoxAdapter(
                     child: CovidBarChart(
-                      covidCases: newNumList.sublist(1, 8),
-                      covidDates:  numList2,
+                      covidCases: pcrcount.sublist(1, 8),
+                      covidDates: pcrDates,
                     ),
                   ),
                 ),
@@ -141,7 +140,7 @@ class _StatusScreenState extends State<StatusScreen> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           child: TabBar(
-            indicator:const BubbleTabIndicator(
+            indicator: const BubbleTabIndicator(
               tabBarIndicatorSize: TabBarIndicatorSize.tab,
               indicatorHeight: 40.0,
               indicatorColor: Colors.white60,
