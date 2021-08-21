@@ -9,7 +9,6 @@ class StatusGridViewer extends StatelessWidget {
 
   StatusGridViewer(this.localData, this.todayData);
 
-
   @override
   Widget build(BuildContext context) {
     final covidData = Provider.of<CovidData>(context);
@@ -19,47 +18,44 @@ class StatusGridViewer extends StatelessWidget {
     var totalDeaths;
     var totalRecovered;
     var totalActive;
+    var activeDate;
 
     if (localData == true && todayData == true) {
-      // setState(() {
-        dataInstance.forEach((element) {
-          totalCases = element.localNewCases;
-          totalDeaths = element.localNewDeaths;
-          totalRecovered = element.localRecovered;
-          totalActive = element.localActiveCases;
-        });
-      // });
-    }else if(localData == true && todayData == false){
-      // setState(() {
-        dataInstance.forEach((element) {
-          totalCases = element.localTotalCases;
-          totalDeaths = element.localDeaths;
-          totalRecovered = element.localRecovered;
-          totalActive = element.localActiveCases;
-        });
-      // });
-    }else if(localData == false && todayData == true){
-      // setState(() {
-        dataInstance.forEach((element) {
-          totalCases = element.globalNewCases;
-          totalDeaths = element.globalNewDeaths;
-          totalRecovered = element.globalRecovered;
-          totalActive = element.globalTotalCases;
-        });
-      // });
-    }else if(localData == false && todayData == false){
-      // setState(() {
-        dataInstance.forEach((element) {
-          totalCases = element.globalTotalCases;
-          totalDeaths = element.globalDeaths;
-          totalRecovered = element.globalRecovered;
-          totalActive = element.globalTotalCases;
-        });
-      // });
+      dataInstance.forEach((element) {
+        totalCases = element.localNewCases;
+        totalDeaths = element.localNewDeaths;
+        totalRecovered = element.localRecovered;
+        totalActive = element.localActiveCases;
+        activeDate = element.updateDate;
+      });
+    } else if (localData == true && todayData == false) {
+      dataInstance.forEach((element) {
+        totalCases = element.localTotalCases;
+        totalDeaths = element.localDeaths;
+        totalRecovered = element.localRecovered;
+        totalActive = element.localActiveCases;
+        activeDate = element.updateDate;
+      });
+    } else if (localData == false && todayData == true) {
+      dataInstance.forEach((element) {
+        totalCases = element.globalNewCases;
+        totalDeaths = element.globalNewDeaths;
+        totalRecovered = element.globalRecovered;
+        totalActive = element.globalTotalCases;
+        activeDate = element.updateDate;
+      });
+    } else if (localData == false && todayData == false) {
+      dataInstance.forEach((element) {
+        totalCases = element.globalTotalCases;
+        totalDeaths = element.globalDeaths;
+        totalRecovered = element.globalRecovered;
+        totalActive = element.globalTotalCases;
+        activeDate = element.updateDate;
+      });
     }
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.35,
       color: Colors.white24,
       child: Column(
         children: [
@@ -74,11 +70,15 @@ class StatusGridViewer extends StatelessWidget {
           Flexible(
             child: Row(
               children: [
-                _buildStateCard("Total Recovered", '$totalRecovered', Colors.green),
+                _buildStateCard(
+                    "Total Recovered", '$totalRecovered', Colors.green),
                 _buildStateCard("Total Active", '$totalActive', Colors.grey),
               ],
             ),
           ),
+          
+              Text('Last Updated on:  $activeDate', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700),),
+         
         ],
       ),
     );

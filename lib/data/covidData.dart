@@ -9,7 +9,8 @@ import 'covidProperties.dart';
 class CovidData with ChangeNotifier {
   List<CovidProperties> _data = [];
 
-  late List<int> pcrCount = [];
+   List<int> pcrCount  = [];
+   List<int> antigenCount  = [];
   final List<String> date = [];
 
   CovidData(this._data);
@@ -30,6 +31,16 @@ class CovidData with ChangeNotifier {
     pcrCount = pcrCount1.map((e) => int.parse(e)).toList();
   }
 
+  void getAntigenCount() {
+    final List<String> antigenCount1 = [];
+
+    data.first.antigenData.forEach((element) {
+      antigenCount1.add(element['antigen_count']);
+    });
+
+    antigenCount = antigenCount1.map((e) => int.parse(e)).toList();
+  }
+
   Future<void> fetchAndSetDataCovid() async {
     var url = 'https://hpb.health.gov.lk/api/get-current-statistical';
 
@@ -42,11 +53,7 @@ class CovidData with ChangeNotifier {
 
     final List<CovidProperties> loadedData = [];
 
-    // extractedData.forEach((key, value) {
-    //   loadedData.add(CovidProperties(
-
-    //   ))
-    // })
+ 
 
     loadedData.add(CovidProperties(
       updateDate: extractedData['data']['update_date_time'],
@@ -65,11 +72,13 @@ class CovidData with ChangeNotifier {
       globalRecovered: extractedData['data']['global_recovered'],
       totalPCR: extractedData['data']['total_pcr_testing_count'],
       pcrData: extractedData['data']['daily_pcr_testing_data'],
+      antigenData: extractedData['data']['daily_antigen_testing_data'],
     ));
 
     _data = loadedData;
 
     getPcrCount();
+    getAntigenCount();
     notifyListeners();
   }
 }

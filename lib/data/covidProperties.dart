@@ -14,6 +14,7 @@ class CovidProperties {
   final int globalRecovered;
   final int totalPCR;
   final List<dynamic> pcrData;
+  final List<dynamic> antigenData;
 
   CovidProperties(
       {required this.updateDate,
@@ -30,6 +31,7 @@ class CovidProperties {
       required this.globalNewDeaths,
       required this.globalRecovered,
       required this.totalPCR,
-      required this.pcrData
+      required this.pcrData,
+      required this.antigenData
       });
 }

@@ -4,20 +4,24 @@ import 'package:flutter/material.dart';
 class CovidBarChart extends StatelessWidget {
   final List<int> covidCases;
   final List<String> covidDates;
+  final String title;
 
-  CovidBarChart({required this.covidCases, required this.covidDates});
+  CovidBarChart(
+      {required this.covidCases,
+      required this.covidDates,
+      required this.title});
 
   final List<Color> colorList = [Colors.red, Colors.green];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: 400,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(20.0),
-          topRight:const  Radius.circular(20.0),
+          topRight: const Radius.circular(20.0),
         ),
       ),
       child: Column(
@@ -25,8 +29,8 @@ class CovidBarChart extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(25.0),
             alignment: Alignment.centerLeft,
-            child: const Text(
-              'PCR Test Updates',
+            child:  Text(
+              title,
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
@@ -39,7 +43,7 @@ class CovidBarChart extends StatelessWidget {
             child: BarChart(
               BarChartData(
                 alignment: BarChartAlignment.spaceEvenly,
-                maxY: 30000.0,
+                maxY: 25000.0,
                 barTouchData: BarTouchData(enabled: false),
                 titlesData: FlTitlesData(
                   show: true,
