@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:Health_app/data/data.dart';
-import 'package:Health_app/widgets/appDrawer.dart';
+import 'package:health_app/data/data.dart';
+import 'package:health_app/widgets/appDrawer.dart';
 
 import '../widgets/custom_app_bar.dart';
 import '../config/palatte.dart';

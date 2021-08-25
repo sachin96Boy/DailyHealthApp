@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
-import 'package:Health_app/data/covidData.dart';
+import 'package:health_app/data/covidData.dart';
 
-import 'package:Health_app/screens/covidBarChart.dart';
+import 'package:health_app/screens/covidBarChart.dart';
 
-import 'package:Health_app/config/palatte.dart';
-import 'package:Health_app/config/styles.dart';
+import 'package:health_app/config/palatte.dart';
+import 'package:health_app/config/styles.dart';
 
-import 'package:Health_app/widgets/custom_app_bar.dart';
-import 'package:Health_app/widgets/statusGridViewer.dart';
+import 'package:health_app/widgets/custom_app_bar.dart';
+import 'package:health_app/widgets/statusGridViewer.dart';
 
 class StatusScreen extends StatefulWidget {
   static const routeName = '/statusScreen';

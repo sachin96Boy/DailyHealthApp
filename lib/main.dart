@@ -1,8 +1,8 @@
-import 'package:Health_app/data/covidData.dart';
-import 'package:Health_app/screens/home_Screen.dart';
-import 'package:Health_app/screens/information.dart';
-import 'package:Health_app/screens/mapScreen.dart';
-import 'package:Health_app/screens/screens.dart';
+import 'package:health_app/data/covidData.dart';
+import 'package:health_app/screens/home_Screen.dart';
+import 'package:health_app/screens/information.dart';
+import 'package:health_app/screens/mapScreen.dart';
+import 'package:health_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

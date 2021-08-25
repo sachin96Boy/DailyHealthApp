@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:Health_app/config/palatte.dart';
+import 'package:health_app/config/palatte.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   
