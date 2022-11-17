@@ -29,8 +29,6 @@ voice analisis to know the health status of the user and determine if the user i
 
 ![Screenshot_1](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0001.jpg)
 
-![Screenshot_2021-05-03-22-05-09-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907107-1d650e00-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)
-
 ![Screenshot_2](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0004.jpg)    
 
 ![Screenshot_3](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0005.jpg)
