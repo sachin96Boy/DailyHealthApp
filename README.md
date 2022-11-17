@@ -27,15 +27,17 @@ voice analisis to know the health status of the user and determine if the user i
 
 ### Screenshots
 
-![Screenshot_2021-05-03-22-05-05-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907100-1b9b4a80-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)
+![Screenshot_1](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0001.jpg)
 
 ![Screenshot_2021-05-03-22-05-09-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907107-1d650e00-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)
 
-![Screenshot_2021-05-03-22-05-13-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907111-1e963b00-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)    
+![Screenshot_2](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0004.jpg)    
 
-![Screenshot_2021-05-03-22-05-17-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907114-1f2ed180-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)
+![Screenshot_3](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0005.jpg)
 
-![Screenshot_2021-05-03-22-05-21-01_0b0e8f8d3f4f0b7d7b7e8f8d3f4f0b7d](https://user-images.githubusercontent.com/81305824/116907117-1fc76800-ac5f-11eb-9b9a-9f9b9b9b9b9b.jpg)
+![Screenshot_4](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0011.jpg)
+
+![Screenshot_5](https://github.com/sachin96Boy/DailyHealthApp/blob/master/assets/screeens/CMIS3242-presentation_page-0012.jpg)
 
 
 ### Setup
