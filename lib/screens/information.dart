@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 // import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -29,35 +31,40 @@ class _InformationScreenState extends State<InformationScreen> {
     const url = "https://vocaroo.com/";
     return Scaffold(
       appBar: CustomAppBar(),
-      body: 
-      // Container(
-      //   child: InAppWebView(
-      //     initialUrlRequest: URLRequest(url: Uri.parse(url)),
-      //     initialOptions: InAppWebViewGroupOptions(
-      //       crossPlatform: InAppWebViewOptions(
-      //         mediaPlaybackRequiresUserGesture: false,
-      //       ),
-      //       android: AndroidInAppWebViewOptions(
-      //         useHybridComposition: true,
-      //       ),
-      //     ),
-      //     androidOnPermissionRequest: (InAppWebViewController controller,
-      //         String origin, List<String> resources) async {
-      //       return PermissionRequestResponse(
-      //           resources: resources,
-      //           action: PermissionRequestResponseAction.GRANT);
-      //     },
-      //   ),
-      // ),
-      WebView(
-        initialUrl: url,
-        javascriptMode: JavascriptMode.unrestricted,
-        onProgress: (int progress) {
-          CircularProgressIndicator(
-            color: Colors.amber,
-          );
-          print('loading :$progress');
-        },
+      body: Container(
+        child:
+            //   InAppWebView(
+            //     initialUrlRequest: URLRequest(url: Uri.parse(url)),
+            //     initialOptions: InAppWebViewGroupOptions(
+            //       crossPlatform: InAppWebViewOptions(
+            //         mediaPlaybackRequiresUserGesture: false,
+            //       ),
+            //       android: AndroidInAppWebViewOptions(
+            //         useHybridComposition: true,
+            //       ),
+            //     ),
+            //     androidOnPermissionRequest: (InAppWebViewController controller,
+            //         String origin, List<String> resources) async {
+            //       return PermissionRequestResponse(
+            //           resources: resources,
+            //           action: PermissionRequestResponseAction.GRANT);
+            //     },
+            //   ),
+            // ),
+            WebView(
+          initialUrl: url,
+          javascriptMode: JavascriptMode.unrestricted,
+          allowsInlineMediaPlayback: true,
+          gestureNavigationEnabled: true,
+          debuggingEnabled: true,
+          initialMediaPlaybackPolicy: AutoMediaPlaybackPolicy.always_allow,
+          onProgress: (int progress) {
+            CircularProgressIndicator(
+              color: Colors.amber,
+            );
+            print('loading :$progress');
+          },
+        ),
       ),
     );
   }
