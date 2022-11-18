@@ -18,6 +18,8 @@ voice analisis to know the health status of the user and determine if the user i
 
 # Due to librrary deprecations, I've moved an copy of this repo in to a new one and added updatesfrom there. Please check out the new repo here:
 
+https://github.com/sachin96Boy/covid19StatusCheakerapp
+
 
 
 ### Technologies
